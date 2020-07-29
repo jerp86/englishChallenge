@@ -45,3 +45,118 @@ div#game-name {
   font-size: 27px;
   margin-right: 24px;
 }
+
+section#body {
+  display: flex;
+  align-items: center;
+
+  margin-top: 16px;
+}
+
+section#body div#left {
+  color: #FFF;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 60%;
+}
+
+section#body div#left span {
+  margin: 8px 0 16px;
+}
+
+section#body div#left div#current-color {
+  height: 200px;
+  width: 200px;
+
+  border: 8px solid #000;
+  border-radius: 16px;
+}
+
+section#body div#left button#btn-answer {
+  background-color: transparent;
+  width: 300px;
+
+  color: #FFF;
+  font-size: 1.16em;
+  font-weight: bold;
+
+  border: 2px solid #FFF;
+  border-radius: 8px;
+
+  padding: 8px 48px;
+  margin-top: 16px;
+}
+
+section#body div#right img {
+  height: 17em;
+}
+
+div#container footer#footer {
+  background-color: rgb(26, 26, 32);
+
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  height: 120px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div#container footer#footer img {
+  height: 60px;
+}
+
+@media (max-width: 768px) {
+  div#container footer#footer  {
+    height: 96px;
+  }
+}
+
+@media (max-width: 540px) {
+  section#body {
+    justify-content: center;
+  }
+
+  section#body div#left {
+    width: 100%;
+  }
+
+  section#body div#right {
+    display: none;
+  }
+}
+
+@media (max-width: 466px) {
+  div#game-score {
+    font-size: 16px;
+    padding: 8px 16px;
+    margin: 8px;
+  }
+}
+
+@media (max-width: 415px) {
+  div#game-name {
+    font-size: 20px;
+  }
+
+  div#game-score img {
+    height: 18px;
+    margin-right: 8px;
+  }
+
+  h3 {
+    font-size: 1.10em;
+  }
+}
+
+@media (max-height: 520px) {
+  div#container footer#footer {
+    height: 64px;
+  }
+}
