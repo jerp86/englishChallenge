@@ -1,5 +1,6 @@
 const engine = {
-  colors: ['green', 'purple', 'pink', 'red', 'yellow', 'orange', 'grey', 'black'],
+  colors: ['green', 'purple', 'pink', 'red', 'yellow', 'orange', 'grey', 'black',
+    'white', 'blue', 'brown'],
   hex: {
     green: '#02EF00',
     purple: '#790093',
@@ -9,9 +10,19 @@ const engine = {
     orange: '#F16529',
     grey: '#EBEBEB',
     black: '#141414',
+    white: '#FFFFFF',
+    blue: '#0000ff',
+    brown: '#8B4513',
   },
   coins: 0,
 };
+
+const audioCoin = new Audio('audio/moeda.mp3');
+const audioError = new Audio('audio/errou.mp3');
+
+const btnStart = document.getElementById('start');
+const btnRecorder = document.getElementById('btn-answer');
+let audioTranscription = '';
 
 const randomColor = () => {
   const indexColor = Math.floor(Math.random() * engine.colors.length);
@@ -24,9 +35,71 @@ const randomColor = () => {
 };
 
 const applyColorInTheBox = color => {
+  const body = document.getElementById('body');
+  const start = document.getElementById('start');
   const colorBox = document.getElementById('current-color');
+
+  start.classList.add('disable');
+  body.classList.remove('disable');
 
   colorBox.style.backgroundColor = color;
   colorBox.style.backgroundImage = "url('/img/caixa-fechada.png')";
   colorBox.style.backgroundSize = '100%';
 };
+
+const updateScore = value => {
+  if (!value || value === 0) {
+    alert('Você tentou manipular o jogo de forma errada?\nTeremos que reiniciar!');
+    return window.location.reload(true);
+  }
+
+  const score = document.getElementById('current-score');
+
+  engine.coins += value;
+
+  value < 0 ? audioError.play() : audioCoin.play();
+
+  score.innerText = engine.coins;
+};
+
+if (window.SpeechRecognition || window.webkitSpeechRecognition) {
+  const SpeechAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recorder = new SpeechAPI();
+
+  recorder.continuous = false;
+  recorder.lang = 'en-US';
+
+  recorder.onstart = function() {
+    btnRecorder.innerText = 'Estou te ouvindo';
+    btnRecorder.style.backgroundColor = "#DDD";
+  }
+
+  recorder.onend = function() {
+    btnRecorder.innerText = 'RESPONDER';
+    btnRecorder.style.backgroundColor = "transparent";
+    btnRecorder.style.color = "#093824";
+  }
+
+  recorder.onresult = function(event) {
+    const correctResponse = document.getElementById('color-in-box').innerText.toUpperCase();
+    audioTranscription = event.results[0][0].transcript.toUpperCase();
+
+    if (audioTranscription === correctResponse) {
+      updateScore(1);
+    } else {
+      updateScore(-1);
+    }
+
+    applyColorInTheBox(randomColor());
+  }
+
+  recorder.onerror = function (event) {
+    alert(`Deu ruim...${event.error}`);
+  }
+
+  btnStart.addEventListener('click', () => applyColorInTheBox(randomColor()));
+  btnRecorder.addEventListener('click', () => recorder.start());
+} else {
+  alert('Seu navegador não tem suporte!')
+  btnStart.addEventListener("click", () => alert('Você não pode Jogar!'));
+}

@@ -5,7 +5,16 @@
 }
 
 body {
-  background-color: #B30000;
+  background: linear-gradient(90deg, rgba(253, 126, 20, 1) 0%, rgba(255, 193, 7, 1) 65%);
+  color: #093824;
+}
+
+h3, span {
+  font-weight: bold;
+}
+
+div#container {
+  height: 100vh;
 }
 
 header#main-header {
@@ -46,6 +55,31 @@ div#game-name {
   margin-right: 24px;
 }
 
+section#start {
+  height: 90vh;
+  background-color: rgb(26, 26, 32);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: rgb(253, 126, 20);
+  text-align: center;
+}
+
+section#start h1 {
+  font-size: 3em;
+}
+
+section#start button {
+  background-color: transparent;
+  cursor: pointer;
+
+  border: 0;
+  outline: 0;
+  margin-top: 24px;
+}
+
 section#body {
   display: flex;
   align-items: center;
@@ -54,8 +88,6 @@ section#body {
 }
 
 section#body div#left {
-  color: #FFF;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,15 +111,18 @@ section#body div#left button#btn-answer {
   background-color: transparent;
   width: 300px;
 
-  color: #FFF;
+  color: #093824;
   font-size: 1.16em;
   font-weight: bold;
 
-  border: 2px solid #FFF;
+  border: 2px solid #093824;
   border-radius: 8px;
 
   padding: 8px 48px;
   margin-top: 16px;
+}
+section#body div#left button#btn-answer img {
+  height: 1.16em;
 }
 
 section#body div#right img {
@@ -119,6 +154,10 @@ div#container footer#footer img {
 }
 
 @media (max-width: 540px) {
+  section#start h1 {
+    font-size: 2em;
+  }
+
   section#body {
     justify-content: center;
   }
@@ -153,10 +192,23 @@ div#container footer#footer img {
   h3 {
     font-size: 1.10em;
   }
+
+  section#start h1 {
+    font-size: 1.5em;
+  }
+
+  section#start img {
+    width: 200px;
+  }
 }
 
 @media (max-height: 520px) {
   div#container footer#footer {
     height: 64px;
   }
+}
+
+section#start.disable,
+section#body.disable {
+  display: none;
 }

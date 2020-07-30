@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
   <title>English Challenge</title>
 </head>
-<body>
+<body allow="microphone">
   <div id="container">
     <header id="main-header">
       <div id="game-score">
         <img src="img/moeda.png" alt="Coin">
-        Coins: 0
+        Coins:&nbsp;<span id="current-score">0</span>
       </div>
 
       <div id="game-name">
@@ -20,14 +21,27 @@
       </div>
     </header>
 
-    <section id="body">
+    <section id="start">
+      <h1>
+        Welcome to <br/>
+        #DIO English Challenge
+      </h1>
+
+      <button id="start">
+        <img src="img/logo-dio.png" alt="Digital Innovation One">
+      </button>
+    </section>
+
+    <section id="body" class="disable">
       <div id="left">
         <h3>FALE O NOME DA COR EM INGLÊS</h3>
-        <span id="color-in-box">Yellow</span>
+        <span id="color-in-box">SPEAK THE NAME OF COLOR IN ENGLISH</span>
 
         <div id="current-color"></div>
 
-        <button id="btn-answer">RESPONDER</button>
+        <button id="btn-answer">
+          RESPONDER
+        </button>
       </div>
 
       <div id="right">
@@ -36,7 +50,9 @@
     </section>
 
     <footer id="footer">
-      <img src="img/logo-dio.png" alt="Digital Innovation One">
+      <a href="https://digitalinnovation.one/">
+        <img src="img/logo-dio.png" alt="Digital Innovation One">
+      </a>
     </footer>
   </div>
 
