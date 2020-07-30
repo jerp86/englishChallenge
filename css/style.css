@@ -208,7 +208,32 @@ div#container footer#footer img {
   }
 }
 
+span#winScreen {
+  position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+  opacity: 0;
+  z-index: 1000;
+	transition: opacty .5s ease-in-out;
+	background-size: cover;
+}
+
+span#winScreen[data-status="active"] {
+  background: rgb(26, 26, 32) url('../img/logo-dio.png') repeat-x center;
+  opacity: 1;
+}
+
+span#winScreen[data-status="active1"] {
+  background-image: url('https://media.giphy.com/media/12WdA5ngyLO90Y/giphy.gif');
+	background-repeat: no-repeat;
+	background-position: center center;
+  opacity: 1;
+}
+
 section#start.disable,
-section#body.disable {
+section#body.disable,
+span#winScreen.disable {
   display: none;
 }

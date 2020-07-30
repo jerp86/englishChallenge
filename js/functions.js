@@ -1,3 +1,4 @@
+const easterEgg = '#dio';
 const engine = {
   colors: ['green', 'purple', 'pink', 'red', 'yellow', 'orange', 'grey', 'black',
     'white', 'blue', 'brown'],
@@ -23,6 +24,8 @@ const audioError = new Audio('audio/errou.mp3');
 const btnStart = document.getElementById('start');
 const btnRecorder = document.getElementById('btn-answer');
 let audioTranscription = '';
+let characterSequence = [];
+let timer;
 
 const randomColor = () => {
   const indexColor = Math.floor(Math.random() * engine.colors.length);
@@ -62,6 +65,33 @@ const updateScore = value => {
   score.innerText = engine.coins;
 };
 
+const enableEasterEgg = event => {
+  clearTimeout(timer);
+  const keyPress = event.key;
+  characterSequence.push(keyPress);
+
+  const phrase = characterSequence.join('');
+
+  if (phrase.includes(easterEgg)) {
+    const win = document.getElementById('winScreen');
+    win.classList.remove('disable');
+    win.dataset.status = 'active1';
+
+    console.log('Você achou o Easter Egg #DIO');
+
+    characterSequence = [];
+    setTimeout(() => {
+      win.dataset.status = 'active';
+    }, 1500);
+    setTimeout(() => {
+      win.dataset.status = 'hidden';
+      win.classList.add('disable');
+    }, 3000);
+  }
+
+  timer = setTimeout(() => characterSequence = [], 500);
+};
+
 if (window.SpeechRecognition || window.webkitSpeechRecognition) {
   const SpeechAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recorder = new SpeechAPI();
@@ -77,7 +107,6 @@ if (window.SpeechRecognition || window.webkitSpeechRecognition) {
   recorder.onend = function() {
     btnRecorder.innerText = 'RESPONDER';
     btnRecorder.style.backgroundColor = "transparent";
-    btnRecorder.style.color = "#093824";
   }
 
   recorder.onresult = function(event) {
@@ -103,3 +132,5 @@ if (window.SpeechRecognition || window.webkitSpeechRecognition) {
   alert('Seu navegador não tem suporte!')
   btnStart.addEventListener("click", () => alert('Você não pode Jogar!'));
 }
+
+window.addEventListener('keydown', e => enableEasterEgg(e));
