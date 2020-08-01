@@ -46,7 +46,7 @@ const applyColorInTheBox = color => {
   body.classList.remove('disable');
 
   colorBox.style.backgroundColor = color;
-  colorBox.style.backgroundImage = "url('../img/caixa-fechada.png')";
+  colorBox.style.backgroundImage = "url('img/caixa-fechada.png')";
   colorBox.style.backgroundSize = '100%';
 };
 

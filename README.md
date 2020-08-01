@@ -21,10 +21,16 @@ ___
   <a href="#interrobang-motivo">Motivo</a>&nbsp;|&nbsp;
   <a href="#seedling-requisitos-mínimos">Requisitos</a>&nbsp;|&nbsp;
   <a href="#rocket-tecnologias-utilizadas">Tecnologias</a>&nbsp;|&nbsp;
-  <a href="#link-como-contribuir">Como Contribuir</a>&nbsp;|&nbsp;
-  <a href="#licença">Licença</a>
+  <a href="#white_check_mark-features">Features</a>
 </h3>
-
+<h3 align="center">
+  <a href="#wrench-como-utilizar">Como Utilizar</a>&nbsp;|&nbsp;
+  <a href="#link-como-contribuir">Como Contribuir</a>&nbsp;|&nbsp;
+  <a href="#memo-licença">Licença</a>&nbsp;|&nbsp;
+  <a href="#man_technologist-autor">Autor</a>
+</h3>
+<h3 align="center">
+</h3>
 ___
 
 
@@ -87,13 +93,13 @@ Em seguida execute o arquivo 'index.html' no seu navegador
 
 ---
 
-## Licença
+## :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-## Autor
+## :man_technologist: Autor
 | [<img src="https://avatars0.githubusercontent.com/u/54115624?s=96&u=36c750bc965fde8a88dedbd0aef8c985c3fde0ab&v=4" /><br/><sub>Jerp</sub>](https://github.com/jerp86) |
 | :---: |
 | [Linkedin](https://www.linkedin.com/in/jerp/) |
